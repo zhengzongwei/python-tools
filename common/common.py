@@ -1,5 +1,6 @@
 import time
 import os
+import json
 
 
 def execute_time(func):
@@ -18,21 +19,38 @@ def execute_time(func):
     return wrapper
 
 
-def now_time(_now_time=None) -> str:
+def format_time(timestamp: int = None) -> str:
     """
-    formatting time
+    The format time is standard time. If the parameter is empty, the current time will be formatted
+    :param timestamp:
+    :return:
     """
-    if _now_time is None:
-        _nowtime = time.time()
-    return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(_now_time))
+    if timestamp is None:
+        timestamp = time.time()
+
+    return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
 
 
-def now_time_strap():
-    return time.time()
+def time_stamp() -> int:
+    """
+    Returns the timestamp of the current time
+    :return:
+    """
+    return int(time.time())
 
 
-def time_strap(str_time: str) -> int:
+def format_timestamp(str_time: str) -> int:
     """
-    formatting time to times trap
+    Format standard format time as a timestamp
     """
-    return int(time.mktime(str_time, "%Y-%m-%d %H:%M:%S"))
+    return int(time.mktime(str_time, '%Y-%m-%d %H:%M:%S'))
+
+
+def format_print(data: str) -> None:
+    """
+
+    :param data:
+    :return:
+    """
+
+    print(json.dumps(data, indent=4))
