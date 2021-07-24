@@ -1,6 +1,8 @@
 import mariadb
-import sys
-import logging
+
+"""
+
+"""
 
 
 class Mariadb(object):
@@ -69,17 +71,6 @@ class Mariadb(object):
                 print(f"Update data Failed, rollback")
                 return False
         return True
-
-
-
-
-
-
-
-
-
-
-
 
     def __del__(self):
         self.cur.close()
