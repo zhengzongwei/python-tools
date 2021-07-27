@@ -6,7 +6,10 @@ import logging
 from logging import handlers
 
 """
-log module
+################################################################
+# description: 日志记录模块
+# author: zhengzongwei@foxmail.com
+################################################################
 """
 
 

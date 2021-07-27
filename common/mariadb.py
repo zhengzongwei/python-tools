@@ -4,7 +4,10 @@
 import mariadb
 
 """
-Read and write to the database
+################################################################
+# description: MariaDB 数据库的读写操作
+# author: zhengzongwei@foxmail.com
+################################################################
 """
 
 
@@ -22,7 +25,7 @@ class Mariadb(object):
 
             self.conn = mariadb.connect(**schema)
         except mariadb.Error as e:
-            # TODO 使用日志记录相关错误
+            # TODO (zhengzongwei@foxmail.com) 使用日志记录相关错误
             print(f"Error connecting to MariaDB Platform: {e}")
             quit()
         else:
@@ -34,7 +37,7 @@ class Mariadb(object):
             try:
                 self.cur.execute(sql)
             except mariadb.Error as e:
-                # TODO 使用日志记录相关错误
+                # TODO (zhengzongwei@foxmail.com) 使用日志记录相关错误
                 print(f"Error connecting to MariaDB Platform: {e}")
                 quit()
             return self.cur
@@ -45,7 +48,7 @@ class Mariadb(object):
                 self.execute_sql(sql)
                 db_data = self.cur.fetachall()
             except mariadb.Error as e:
-                # TODO 使用日志记录相关错误
+                # TODO (zhengzongwei@foxmail.com) 使用日志记录相关错误
                 print(f"Error connecting to MariaDB Platform: {e}")
                 quit()
             else:
@@ -57,7 +60,7 @@ class Mariadb(object):
     #             self.execute_sql(sql)
     #             db_data = self.cur.fetachone()
     #         except mariadb.Error as e:
-    #             # TODO 使用日志记录相关错误
+    #             # TODO (zhengzongwei@foxmail.com) 使用日志记录相关错误
     #             print(f"Error connecting to MariaDB Platform: {e}")
     #             quit()
     #         else:

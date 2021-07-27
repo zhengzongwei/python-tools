@@ -6,7 +6,10 @@ import os
 import json
 
 """
-The module contains some public functions
+################################################################
+# description: 公共调用函数
+# author: zhengzongwei@foxmail.com
+################################################################
 """
 
 
