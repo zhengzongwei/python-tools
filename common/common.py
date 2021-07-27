@@ -1,6 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import time
 import os
 import json
+
+"""
+The module contains some public functions
+"""
 
 
 def execute_time(func):

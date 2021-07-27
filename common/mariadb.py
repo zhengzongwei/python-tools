@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import mariadb
 
 """
-
+Read and write to the database
 """
 
 
@@ -75,8 +78,3 @@ class Mariadb(object):
     def __del__(self):
         self.cur.close()
         self.conn.close()
-
-
-
-
-

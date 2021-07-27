@@ -1,6 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import logging
 
 from logging import handlers
+
+"""
+log module
+"""
 
 
 # class Logger(object):
