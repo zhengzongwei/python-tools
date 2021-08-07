@@ -4,6 +4,8 @@
 import time
 import os
 import json
+import hashlib
+
 
 """
 ################################################################
@@ -11,6 +13,24 @@ import json
 # author: zhengzongwei@foxmail.com
 ################################################################
 """
+
+
+def get_file_md5(file_path: str):
+    """
+    获取文件的MD5
+    """
+
+    if not os.path.isfile(file_path):
+        return False
+    md5 = hashlib.md5()
+    with open(file_path, 'rb') as f:
+        while True:
+            b = f.read(8096)
+            if not b:
+                break
+            md5.update(b)
+
+    return md5.hexdigest()
 
 
 def execute_time(func):
@@ -22,7 +42,8 @@ def execute_time(func):
         start_time = time.time()
         func_return = func(*args, **kwargs)
         end_time = time.time()
-        format_str = ("[%s] execute time: %s " % (func.__name__, end_time - start_time))
+        format_str = ("[%s] execute time: %s " %
+                      (func.__name__, end_time - start_time))
         os.system("echo %s >> %s-execute-time" % (format_str, func.__name__))
         return func_return
 
