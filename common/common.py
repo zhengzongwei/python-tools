@@ -15,14 +15,19 @@ import hashlib
 """
 
 
-def get_file_md5(file_path: str):
+def get_file_md5(file_path: str,hash_type='md5'):
     """
     获取文件的MD5
     """
 
     if not os.path.isfile(file_path):
         return False
-    md5 = hashlib.md5()
+    if hash_type == 'md5':
+        md5 = hashlib.md5()
+    
+    else:
+        
+        return
     with open(file_path, 'rb') as f:
         while True:
             b = f.read(8096)
