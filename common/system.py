@@ -68,6 +68,7 @@ def get_disk_info():
     disk_info_arr = []
     
     try:
+        # windwos 磁盘检测
         disk_partitions = psutil.disk_partitions()
         for _disk in disk_partitions:
             disk_info = {}
@@ -79,6 +80,8 @@ def get_disk_info():
             disk_info['free'] = _disk_usage.free
             disk_info['percent'] = _disk_usage.percent
             disk_info_arr.append(disk_info)
+            
+        # linux 磁盘检测
 
     except Exception as e:
         pass
