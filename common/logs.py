@@ -15,9 +15,10 @@ from logging import handlers
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 class Logger(object):
     LOG_FILE = "logs/log.log"
-    LOG_PATH = os.path.join(BASE_DIR,LOG_FILE)
+    LOG_PATH = os.path.join(BASE_DIR, LOG_FILE)
     LOG_LEVEL = logging.INFO
 
     def __init__(self, logger_name="logs", console_log_status=False):
@@ -28,7 +29,7 @@ class Logger(object):
         if not os.path.exists(self.LOG_PATH):
             log_dir = os.path.dirname(self.LOG_PATH)
             if not os.path.exists(log_dir):
-                    os.makedirs(log_dir)
+                os.makedirs(log_dir)
 
         log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
         format_str = logging.Formatter(log_format)
@@ -58,13 +59,12 @@ class Logger(object):
             self.logger.warning(msg)
 
     def blog(self, msg, level="WARNING"):
-        self.log(msg,level)
+        self.log(msg, level)
 
     def ulog(self, msg, level="WARNING"):
-        self.log(msg,level)
+        self.log(msg, level)
         # 数据库写入
 
     def dlog(self, msg, level="WARNING"):
-        self.log(msg,level)
+        self.log(msg, level)
         # 数据库写入
-

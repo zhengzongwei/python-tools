@@ -1,4 +1,7 @@
 import mariadb
+import logging
+
+module_logger = logging.getLogger("mariadb")
 
 
 class MariaDB(object):
@@ -21,7 +24,7 @@ class MariaDB(object):
             self.cursor = self.conn.cursor()
         except mariadb.Error as e:
             self.close()
-            print("MariaDB Error %s" % e)
+            module_logger.error("MariaDB Error %s" % e)
 
     def __del__(self):
         self.close()
@@ -36,14 +39,14 @@ class MariaDB(object):
         try:
             self.conn.select_db(db)
         except mariadb.Error as e:
-            print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            module_logger.error("MariaDB Error %s" % e)
 
     def query(self, sql):
         try:
             rows = self.cursor.execute(sql)
             return rows
         except MariaDB.Error as e:
-            print("[query]MariaDB execute %s,err=%s" % (sql, e))
+            module_logger.error("MariaDB execute sql [%s],err=%s" % (sql, e))
 
     def showAllDbs(self):
         dbs = []
