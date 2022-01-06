@@ -5,8 +5,9 @@ import time
 import os
 import json
 import hashlib
+import logging
 
-
+module_logger = logging.getLogger('common')
 """
 ################################################################
 # description: 公共调用函数
@@ -79,6 +80,7 @@ def format_timestamp(str_time: str) -> int:
     """
     Format standard format time as a timestamp
     """
+
     return int(time.mktime(str_time, '%Y-%m-%d %H:%M:%S'))
 
 
