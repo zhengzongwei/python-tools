@@ -10,14 +10,28 @@
 
 
 class BaseException(Exception):
-    pass
+
+    def __init__(self, detail, code=None):
+        self.detail = None
+        if code and code >= 0:
+            code = -1
+        self.code = code or -1
+        super(BaseException, self).__init__(detail)
+
+    def __str__(self):
+        return 'message: %s code: %s' % (self.detail, self.code)
+
+
 
 class hashError(BaseException):
     def __init__(self, *args: object) -> None:
-        super().__init__(*args)
+        super(hashError, self).__init__(*args)
 
-    def __str__(self) -> str:
-        return "类型错误，请重新选择类型！"
-    
 
-    
+if __name__ == '__main__':
+    # raise hashError("fkds")
+    a = None
+
+    b = a or -1
+
+    print(b)
