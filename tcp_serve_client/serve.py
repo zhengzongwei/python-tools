@@ -1,6 +1,6 @@
 import socket
 import json
-import os
+
 from time import ctime
 
 
@@ -48,7 +48,6 @@ class Serve(object):
                 msg = "[server] <%s> success got the data: %s" % (ctime(), data_str)
                 self.conn.send(msg.encode())
             self.conn.close()
-
 
     def parse_command(self, data: dict):
         data_type = data['type']

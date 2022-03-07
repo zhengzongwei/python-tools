@@ -1,4 +1,3 @@
-import os
 import socket
 
 
@@ -9,7 +8,7 @@ class Client(object):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client.connect((host, port))
 
-    def run(self, data:str):
+    def run(self, data: str):
         with self.client:
             self.client.sendall(data.encode())
             recv_data = self.client.recv(self.BUF_SIZE)

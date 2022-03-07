@@ -1,4 +1,7 @@
 import pytest
+import sys
+
+sys.path.append('../')
 
 from docker_api.docker_api import Docker
 from docker_api.docker_api import DockerImage
