@@ -4,8 +4,6 @@ import sys
 sys.path.append('../')
 
 from docker_api.docker_api import Docker
-from docker_api.docker_api import DockerImage
-from docker_api.docker_api import DockerContainer
 
 
 class TestDocker():
