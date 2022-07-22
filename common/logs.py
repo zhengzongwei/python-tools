@@ -86,7 +86,6 @@ class LoggerBase(object):
         file_handle.setFormatter(format_str)
         self.logger.addHandler(file_handle)
 
-    @property
     def _log(self, msg, level="WARNING"):
         level = level.upper()
         if level == "INFO":

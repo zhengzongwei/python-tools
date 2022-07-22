@@ -11,7 +11,7 @@ LOG = logs.Logger()
 # module_logger = logging.getLogger('test')
 
 
-LOG._log("sdsdasTest Docker Class", level="DEBUG")
+LOG.dlog("sdsdasTest Docker Class", level="DEBUG")
 
 # class TestDocker():
 #     def setup(self):
