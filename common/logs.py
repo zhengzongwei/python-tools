@@ -17,8 +17,10 @@ class LoggerBase(object):
     """
     Log Baase class
     """
-    def __init__(self) -> None:
+
+    def __init__(self, logger_name='logs') -> None:
         # 是否控制台输出
+        self.logger_name = logger_name
         self.LOG_LEVEL = logging.DEBUG
         self.console_log_status = False
         self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,34 +43,37 @@ class LoggerBase(object):
         if os.path.isfile(path):
             path = os.path.abspath(path)
         return os.makedirs(path)
-    
+
     def config_log(self):
         """
         配置日志
         :return:
         """
         # TODO 通过配置文件读取log配置，读取不到使用默认配置
-        log_config_path = os.path.join(self.base_dir, "log.conf")
-        if os.path.exists(log_config_path):
-            logging.config.fileConfig(log_config_path)
-        else:
-            log_path = f'{self.base_dir}/logs.log'
-            log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
-            self.init_log(log_path=log_path, log_format=log_format)
+        # log_config_path = os.path.join(self.base_dir, "log.conf")
+        # if os.path.exists(log_config_path):
+        #     logging.config.fileConfig(log_config_path)
+        # else:
+        #     log_path = f'{self.base_dir}/logs.log'
+        #     log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
+        #     self.init_log(log_path=log_path, log_format=log_format)
 
-    def init_log(self, logger_name="logs", log_path=None, log_format=None):
+        log_path = f'{self.base_dir}/logs.log'
+        log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
+        self.init_log(log_path=log_path, log_format=log_format)
+
+    def init_log(self, log_path=None, log_format=None):
         """
         初始化日志
         :param
         """
-        self.logger_name = logger_name
         self.logger = logging.getLogger(self.logger_name)
         self.logger.setLevel(self.LOG_LEVEL)
+        self.logger.propagate = True
 
         if log_path is None:
-            self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             log_path = os.path.join(self.base_dir, "logs")
-        
+
         if self.LOG_LEVEL in [logging.DEBUG, logging.INFO]:
             self.console_log_status = True
 
@@ -86,36 +91,41 @@ class LoggerBase(object):
         file_handle.setFormatter(format_str)
         self.logger.addHandler(file_handle)
 
-    def _log(self, msg, level="WARNING"):
+    def _log(self, msg, level="WARNING", stacklevel=3):
         level = level.upper()
         if level == "INFO":
-            self.logger.info(msg)
+            self.logger.info(msg, stacklevel=stacklevel)
         elif level == "DEBUG":
-            self.logger.debug(msg)
+            self.logger.debug(msg, stacklevel=stacklevel)
         elif level == "WARNING":
-            self.logger.warning(msg)
+            self.logger.warning(msg, stacklevel=stacklevel)
         elif level == "ERROR":
-            self.logger.error(msg)
+            self.logger.error(msg, stacklevel=stacklevel)
         elif level == "CRITICAL":
-            self.logger.critical(msg)
+            self.logger.critical(msg, stacklevel=stacklevel)
         else:
             self.logger.warning(msg)
 
 
 class Logger(LoggerBase):
 
-    def dlog(self, msg, level="WARNING"):
+    def dlog(self, msg, level="DEBUG"):
+        """
+        development log
+        """
         self._log(msg, level)
         # TODO 数据库写入
 
-    def blog(self, msg, level="WARNING"):
+    def blog(self, msg, level="ERROR"):
+        """
+        backend log
+        """
         self._log(msg, level)
         # TODO 数据库写入
 
     def ulog(self, msg, level="WARNING"):
+        """
+        user log
+        """
         self._log(msg, level)
         # TODO 数据库写入
-
-
-
-

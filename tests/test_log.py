@@ -4,25 +4,12 @@ import pytest
 
 from common import logs
 
-LOG = logs.Logger()
-
-# import logging
-
-# module_logger = logging.getLogger('test')
+LOG = logs.Logger(__file__)
 
 
-LOG.dlog("sdsdasTest Docker Class", level="DEBUG")
 
-# class TestDocker():
-#     def setup(self):
-#         LOG.log("Test Docker Class","DEBUG")
+def main():
 
-#     def teardown(self):
-#         print("docker test")
+    LOG.dlog("sdsdasTest Docker Class", "DEBUG")
 
-#     def test_docker(self):
-#         pass
-
-
-# if __name__ == '__main__':
-#     pytest.main()
+main()
