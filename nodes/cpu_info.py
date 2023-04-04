@@ -13,9 +13,9 @@ class CPUInfoBase(object):
     def __init__(self) -> None:
         self.cpu_cores: int = 0
         self.cpu_threads: int = 0
-        self.cpu_arch: str = None
+        self.cpu_arch: str = ''
         self.cpu_percent: list[int] = []
-        self.model_name: str = None
+        self.model_name: str = ''
 
         self.get_cpu_info()
 
@@ -46,7 +46,8 @@ class CPUInfoBase(object):
 
         self.model_name = cpu_info.get_cpu_name()
 
-    def exec(self, cmd: str, agent: str = 'linux') -> None:
+    @staticmethod
+    def exec(cmd: str) -> str:
         p = sp.Popen(cmd, stdout=sp.PIPE, stdin=sp.PIPE, stderr=sp.STDOUT, shell=True)
         out, err = p.communicate()
         logging.debug(f"out {out}, err {err}")
@@ -61,7 +62,7 @@ class CPUInfoBase(object):
         self.get_cpu_name()
         self.get_cpu_arch()
 
-    def __str__(self) -> str:
+    def __str__(self) -> dict[str, str]:
         return self.__dict__
 
 
@@ -80,7 +81,6 @@ class LinuxCPUInfo(CPUInfoBase):
     def get_cpu_name(self) -> str:
         if self.get_cpu_detail('model_name') is not None:
             return self.get_cpu_detail('model_name')
-    
 
 
 class DarwinCPUInfo(CPUInfoBase):
