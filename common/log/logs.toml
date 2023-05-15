@@ -1,0 +1,6 @@
+[logs]
+log_level = "info"
+log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
+log_console = true
+log_path = '/var/log/logs/'
+stacklevel = 3
