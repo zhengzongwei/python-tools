@@ -1,4 +1,4 @@
-import mariadb
+from common.dbs import mariadb
 import logging
 
 module_logger = logging.getLogger("mariadb")
