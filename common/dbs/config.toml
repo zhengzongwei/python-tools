@@ -1,0 +1,16 @@
+[mongo]
+ip = '192.168.31.223'
+port = 27017
+username = 'admin'
+password = 'admin'
+collection = 'logs'
+db_name = 'log'
+
+
+[mongo_huawei]
+ip = '123.249.13.235'
+port = 27017
+username = 'mongo'
+password = 'mongo'
+collection = 'info'
+db_name = 'info'

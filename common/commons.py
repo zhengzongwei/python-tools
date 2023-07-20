@@ -81,7 +81,7 @@ def format_timestamp(str_time: str) -> int:
     Format standard format time as a timestamp
     """
 
-    return int(time.mktime(str_time, '%Y-%m-%d %H:%M:%S'))
+    return int(time.mktime(str_time))
 
 
 def format_print(data: str) -> None:

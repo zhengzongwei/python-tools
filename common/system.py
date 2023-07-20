@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import platform
 import psutil
 
-if platform.system() == 'Windows':
-    import wmi
+
+
+
+from common.log.logs import Logger
+
+logging = Logger("SYSTEM")
+
+# if platform.system() == 'Windows':
+#     import wmi
 
 """
 ################################################################
@@ -13,7 +19,6 @@ if platform.system() == 'Windows':
 # author: zhengzongwei@foxmail.com
 ################################################################
 """
-
 
 
 def get_os_info():
@@ -31,12 +36,12 @@ def get_os_info():
 
         # 操作系统的版本信息
         os_info['os_version'] = platform.version()
-    
+
     except Exception as e:
         pass
 
-
     return os_info
+
 
 def get_cpu_info():
     cpu_info = dict()
@@ -56,6 +61,7 @@ def get_cpu_info():
         pass
     pass
 
+
 def get_net_info():
     net_info = {}
 
@@ -64,9 +70,10 @@ def get_net_info():
     except Exception as e:
         pass
 
+
 def get_disk_info():
     disk_info_arr = []
-    
+
     try:
         # windwos 磁盘检测
         disk_partitions = psutil.disk_partitions()
@@ -80,7 +87,7 @@ def get_disk_info():
             disk_info['free'] = _disk_usage.free
             disk_info['percent'] = _disk_usage.percent
             disk_info_arr.append(disk_info)
-            
+
         # linux 磁盘检测
 
     except Exception as e:
@@ -95,7 +102,8 @@ def get_node_info():
     os_info = get_os_info()
     cpu_info = get_cpu_info()
     disk_info = get_disk_info()
-    
+    logging.info("sda123123")
+
     info['os_info'] = os_info
     info['cpu_info'] = cpu_info
     info['disk_info'] = disk_info
@@ -104,7 +112,5 @@ def get_node_info():
     return ret
 
 
-
 if __name__ == '__main__':
     print(get_node_info())
-
