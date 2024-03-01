@@ -1,6 +1,8 @@
 [logs]
-log_level = "info"
-log_format = "%(asctime)s - %(name)s[func: %(funcName)s line:%(lineno)d] - %(levelname)s: %(message)s"
+level = "info"
+log_format ="%(asctime)s %(process)d %(levelname)s %(name)s %(message)s [%(funcName)s] %(pathname)s:%(lineno)d"
 log_console = true
-log_path = '/var/log/logs/'
-stacklevel = 2
+#log_dir = './logs'
+#log_dir = '/var/log/logs/'
+#log_file = ''
+#stacklevel = 2
