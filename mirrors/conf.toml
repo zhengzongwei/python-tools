@@ -1,0 +1,50 @@
+[centos]
+[centos.'7.9.2009']
+isos = ['x86_64', 'aarch64']
+os = ['x86_64', 'aarch64']
+[centos.'8']
+isos = ['x86_64', 'aarch64']
+os = ['x86_64', 'aarch64']
+
+
+[openeuler]
+[openeuler.'openEuler-22.03-LTS']
+isos = ['x86_64', 'aarch64', 'loogarch64']
+raspi_img = ''
+OS = ['x86_64', 'aarch64', 'loogarch64']
+[openeuler.'openEuler-22.03-LTS-SP3']
+isos = ['x86_64', 'aarch64', 'loogarch64']
+raspi_img = ''
+OS = ['x86_64', 'aarch64', 'loogarch64']
+
+[debian]
+[debian.'12.4.0']
+isos = ['amd64', 'arm64', ]
+[debian.'12.5.0']
+isos = ['amd64', 'arm64', ]
+
+[ubuntu]
+[ubuntu.'22.04.0']
+isos = ['amd64', 'arm64']
+[ubuntu.'20.04.0']
+isos = ['amd64', 'arm64']
+
+[windwos]
+software = []
+[windwos.XP]
+isos = ['x86_64']
+[windwos.7]
+isos = ''
+[windwos.8]
+isos = ''
+[windwos.10]
+isos = ''
+[windwos.11]
+isos = ['x86_64', 'aarch64']
+
+#[support_system]
+#centos = ['7.9.2009']
+#openeuler = ['openEuler-22.03-LTS']
+#debian = ['12.5.0','12.4.0']
+#ubuntu = ['22.04','20.04']
+#windows = ['XP','7','8','10','11']
