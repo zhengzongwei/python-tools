@@ -28,8 +28,6 @@ def create_directories(config):
                 os.makedirs(raspi_dir, exist_ok=True)
 
             if 'os' in info or 'OS' in info:
-                print(info,'321')
-                print(system_path,'123')
                 os_dir = os.path.join(str(system_path), 'os')
                 os.makedirs(os_dir, exist_ok=True)
 
